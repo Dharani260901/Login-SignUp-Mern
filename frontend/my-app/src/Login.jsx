@@ -10,13 +10,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const API_URL = 'http://localhost:8080/login';
-
+  const API_URL = import.meta.env.VITE_API_URL;
   axios.defaults.withCredentials = true;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(API_URL, { email, password })
+    axios.post(`${API_URL}/login`,{ email, password })
       .then(response => {
         toast.success("Login successful! 🎉"); // ✅ Added toast
         setTimeout(() => navigate('/home'), 1500); // ✅ Navigate after toast

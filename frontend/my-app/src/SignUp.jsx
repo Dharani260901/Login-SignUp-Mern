@@ -11,11 +11,12 @@ const SignUp = () => {
     const [password,setPassword] = useState("");
     const navigate = useNavigate();
 
-    const API_URL = 'http://localhost:8080/signup';
+    
+const API_URL = import.meta.env.VITE_API_URL;
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        axios.post(API_URL,{name,email,password})
+        axios.post(`${API_URL}/signup`,{name,email,password})
         .then(response=>{
             toast.success("User registered successfully! 🎉"); // ✅ Added toast
             setTimeout(() => navigate('/login'), 1500);       // ✅ Navigate after toast
