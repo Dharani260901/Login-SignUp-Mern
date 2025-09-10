@@ -84,10 +84,11 @@ app.post('/login', async (req, res) => {
 
       // 👉 Store JWT inside a cookie
     res.cookie("authToken", token, {
-      httpOnly: true,   // makes it inaccessible to JS (secure)
-      secure: false,    // set true if using HTTPS
-      sameSite: "strict"
-    });
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+});
+
 
     // Send response with token
     res.status(200).json({
@@ -105,5 +106,5 @@ app.post('/login', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
