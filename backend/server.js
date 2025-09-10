@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors({
-  origin: ["https://login-sign-up-mernstack.vercel.app/"],
+  origin: ["https://login-sign-up-mern.vercel.app"],
   methods: ["GET","POST"],
   credentials:true
 
@@ -41,6 +41,10 @@ const verifyUser = (req, res, next) => {
   });
 };
 
+
+app.get('/',(req,res)=>{
+  res.json("Backend is running!")
+})
 
 app.get('/home',verifyUser, (req,res)=>{
   return res.json("Success")
