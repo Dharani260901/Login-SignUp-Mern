@@ -65,8 +65,8 @@ npm run dev
 ## API Endpoints
 
 ### Register User
-*POST* - /signup
-Body: { "name": "Dharani", "email": "test@email.com", "password": "123456" }
+- POST - /signup
+- Body: { "name": "Dharani", "email": "test@email.com", "password": "123456" }
 
 ### Login User
 *POST* - /login
