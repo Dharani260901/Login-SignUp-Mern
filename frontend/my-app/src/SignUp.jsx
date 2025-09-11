@@ -12,7 +12,7 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     
-const API_URL = "http://localhost:8080"; // Replace with your backend URL
+const API_URL = import.meta.env.VITE_API_URL;
 axios.defaults.withCredentials = true;
 
     const handleSubmit = (e)=>{
