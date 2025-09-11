@@ -71,4 +71,9 @@ npm run dev
 ### Login User
 - POST - /login
 - Body: { "email": "test@email.com", "password": "123456" }
+---
+
+## 🔗 Project Link
+[![Live Demo](https://img.shields.io/badge/MERN%20Auth%20App-Live%20Demo-green?style=for-the-badge&logo=vercel)]([https://your-vercel-link.com](https://login-mernstack.vercel.app/))
+
 
