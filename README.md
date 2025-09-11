@@ -69,6 +69,6 @@ npm run dev
 - Body: { "name": "Dharani", "email": "test@email.com", "password": "123456" }
 
 ### Login User
-*POST* - /login
-Body: { "email": "test@email.com", "password": "123456" }
+- POST - /login
+- Body: { "email": "test@email.com", "password": "123456" }
 
