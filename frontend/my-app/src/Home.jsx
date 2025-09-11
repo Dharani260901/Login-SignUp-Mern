@@ -1,29 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   const navigate = useNavigate();
+    const [username, setUsername] = useState("");
 
   // ✅ Check auth on mount
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    if (!token) {
+     const storedName = localStorage.getItem("username");
+      if (!token) {
       navigate('/login');
+    } else {
+      setUsername(storedName); // 👈 get username
     }
   }, [navigate]);
 
-  // ✅ Logout function
   const handleLogout = () => {
-    localStorage.removeItem("authToken"); // remove token
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("username"); // clear username
     toast.success("Logged out successfully! 👋");
     setTimeout(() => navigate('/login'), 1000);
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-3xl text-red-400 font-bold">Welcome to Home Page!</h1>
+      <h1 className="text-3xl text-red-400 font-bold">
+        Welcome, {username || "User"}!
+      </h1>
 
       <button 
         onClick={handleLogout} 
