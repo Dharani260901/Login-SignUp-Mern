@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
-// ✅ 1. Import toast and ToastContainer
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // ✅ Added
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,28 +13,26 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${API_URL}/login`,{ email, password })
+    axios.post(`${API_URL}/login`, { email, password })
       .then(response => {
-        toast.success("Login successful! 🎉"); // ✅ Added toast
-        setTimeout(() => navigate('/home'), 1500); // ✅ Navigate after toast
-        console.log("User logged in successfully:", response.data);
+        // ✅ Save token or flag in localStorage
+        localStorage.setItem("authToken", response.data.token || "session-active");
+
+        toast.success("Login successful! 🎉");
+        setTimeout(() => navigate('/home'), 1500); 
       })
       .catch(error => {
-        toast.error("Login failed ❌"); // ✅ Added toast
+        toast.error("Login failed ❌");
         console.error("There was an error logging in the user!", error);
       });
-  }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-
       <div className="bg-blue-100 shadow-lg rounded-2xl p-8 w-full max-w-md">
-        {/* Heading */}
         <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
 
-        {/* Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
-          {/* Email */}
           <div className="flex items-center">
             <label className="w-24 text-sm font-medium">Email</label>
             <input
@@ -48,7 +44,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Password */}
           <div className="flex items-center">
             <label className="w-24 text-sm font-medium">Password</label>
             <input
@@ -60,7 +55,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Login Button */}
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
@@ -69,7 +63,6 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Signup Option */}
         <p className="text-center text-sm text-gray-600 mt-4">
           Don’t have an account?{" "}
           <Link to="/">
@@ -80,18 +73,17 @@ const Login = () => {
         </p>
       </div>
 
-      {/* ✅ 2. Toast Container added here */}
-          <ToastContainer 
-        position="top-right" 
-        autoClose={2000} 
-        hideProgressBar={false}   // ✅ Changed from true/hidden to false
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+       <ToastContainer 
+            position="top-right" 
+            autoClose={2000} 
+            hideProgressBar={false}   // ✅ Changed from true/hidden to false
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
     </div>
   );
 };
