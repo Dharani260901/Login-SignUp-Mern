@@ -17,6 +17,8 @@ const Login = () => {
       .then(response => {
         // ✅ Save token or flag in localStorage
         localStorage.setItem("authToken", response.data.token || "session-active");
+        localStorage.setItem("username", response.data.user.name); // 👈 Save username
+
 
         toast.success("Login successful! 🎉");
         setTimeout(() => navigate('/home'), 1500); 
