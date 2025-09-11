@@ -74,7 +74,7 @@ npm run dev
 ---
 
 ## 🔗 Project Link
-[Click here to view the project](https://login-mernstack.vercel.app/)
+[Click here! ╰┈➤](https://login-mernstack.vercel.app/)
 
 
 
