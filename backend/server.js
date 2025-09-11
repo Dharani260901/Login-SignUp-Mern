@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors({
-  origin: ["https://login-sign-up-mern.vercel.app"],
+  origin: ["http://localhost:5173"], // frontend URL
   methods: ["GET","POST"],
   credentials:true
 
