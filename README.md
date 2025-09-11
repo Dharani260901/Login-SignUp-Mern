@@ -66,7 +66,7 @@ npm run dev
 
 ### Register User
 - POST - /signup
-- Body: { "name": "Dharani", "email": "test@email.com", "password": "123456" }
+- Body: { "name": "test", "email": "test@email.com", "password": "123456" }
 
 ### Login User
 - POST - /login
